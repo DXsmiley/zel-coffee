@@ -477,31 +477,47 @@ function init() {
     
     canvasOffset.x = canvas.width/2;
     canvasOffset.y = canvas.height/2;
-    
-    canvas.addEventListener('pointermove', function(evt) {
+
+    canvas.addEventListener('mousemove', function(evt) {
         onMouseMove(canvas,evt);
     }, false);
-    
-    canvas.addEventListener('pointerdown', function(evt) {
+
+    canvas.addEventListener('mousedown', function(evt) {
         onMouseDown(canvas,evt);
     }, false);
-    
-    canvas.addEventListener('pointerup', function(evt) {
+
+    canvas.addEventListener('mouseup', function(evt) {
         onMouseUp(canvas,evt);
     }, false);
-    
-    canvas.addEventListener('pointerout', function(evt) {
+
+    canvas.addEventListener('mouseout', function(evt) {
         onMouseOut(canvas,evt);
     }, false);
-    
+
+    canvas.addEventListener('touchmove', function(evt) {
+        onMouseMove(canvas,evt.changedTouches[0]);
+    }, false);
+
+    canvas.addEventListener('touchstart', function(evt) {
+        onMouseDown(canvas,evt.changedTouches[0]);
+    }, false);
+
+    canvas.addEventListener('touchend', function(evt) {
+        onMouseUp(canvas,evt.changedTouches[0]);
+    }, false);
+
+    canvas.addEventListener('touchout', function(evt) {
+        onMouseOut(canvas,evt.changedTouches[0]);
+    }, false);
+
     canvas.addEventListener('keydown', function(evt) {
         onKeyDown(canvas,evt);
     }, false);
-    
+
     canvas.addEventListener('keyup', function(evt) {
         onKeyUp(canvas,evt);
     }, false);
-    
+
     myDebugDraw = getCanvasDebugDraw();            
     // myDebugDraw.SetFlags(e_shapeBit);
     
